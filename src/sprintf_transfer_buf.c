@@ -1,6 +1,6 @@
-#include "s21_sprintf.h"
+#include "sprintf.h"
 
-char *s21_transfer_buf(va_list ap, pars_format *form) {
+char *transfer_buf(va_list ap, pars_format *form) {
   char *buf = NULL;
   switch (form->specifier) {
     case 'c':
@@ -69,7 +69,7 @@ char *processing_str(va_list ap, pars_format *form) {
       str = NULL_STR;
     }
   }
-  int len_str = s21_strlen(str);
+  int len_str = strlen(str);
   int size_buf = calculation_size_str(form, len_str);
   int space = size_buf - len_str;
   if (form->precision > -1 && form->precision <= len_str) {

@@ -1,31 +1,31 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
 OBJ_DIR = objects/
-SOURCE = $(wildcard s21_*.c)
+SOURCE = $(wildcard *.c)
 OBJECT = $(patsubst %.c, %.o, $(SOURCE))  # replace .c -> .o (making object files)
 EXECUTABLE = test
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Linux)
 	GFLAGS = -lcheck_pic -lm -lsubunit
-	RM_COMMAND = rm -rf test-s21_parse.gcda test-s21_parse.gcno test-s21_floats.gcda test-s21_floats.gcno test-s21_itoa.gcda test-s21_itoa.gcno test-test.gcda test-test.gcno
+	RM_COMMAND = rm -rf test-parse.gcda test-parse.gcno test-floats.gcda test-floats.gcno test-itoa.gcda test-itoa.gcno test-test.gcda test-test.gcno
 endif
 
 ifeq ($(UNAME), Darwin)
 	GFLAGS = -lcheck
-	RM_COMMAND = rm test*.gcda test*.gcno s21_parse*.gcda s21_parse*.gcno s21_floats*.gcda s21_floats*.gcno s21_itoa*.gcda s21_itoa*.gcno
+	RM_COMMAND = rm test*.gcda test*.gcno parse*.gcda parse*.gcno floats*.gcda floats*.gcno itoa*.gcda itoa*.gcno
 endif
 
-all: clean s21_string.a
+all: clean string.a
 
-s21_string.a: clean $(OBJECT)
+string.a: clean $(OBJECT)
 	# mkdir $(OBJ_DIR)
-	ar rc s21_string.a $(OBJECT)
-	ranlib s21_string.a
+	ar rc string.a $(OBJECT)
+	ranlib string.a
 	rm -rf *.o
 
-test: clean s21_string.a
-	$(CC) $(CFLAGS) test.c s21_string.a -o $(EXECUTABLE) $(GFLAGS)
+test: clean string.a
+	$(CC) $(CFLAGS) test.c string.a -o $(EXECUTABLE) $(GFLAGS)
 	./$(EXECUTABLE)
 
 gcov_report: clean

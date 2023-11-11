@@ -1,4 +1,4 @@
-#include "s21_string.h"
+#include "string.h"
 void my_itoa(int n, char arr[]);
 void my_reverse(char arr[]);
 
@@ -251,20 +251,20 @@ char *errorList[] = {"Success",
 
 char unknownerror[100] = {0};
 
-char *s21_strerror(int errnum) {
-  char *ptr = s21_NULL;
+char *strerror(int errnum) {
+  char *ptr = NULL;
   if (errnum > MAX || errnum < 0) {
     char number[30] = {0};
     my_itoa(errnum, number);
 #ifdef __APPLE__
-    s21_memset(unknownerror, 0, 100);
-    s21_strncat(unknownerror, "Unknown error: ", 100);
+    memset(unknownerror, 0, 100);
+    strncat(unknownerror, "Unknown error: ", 100);
 #endif
 #ifdef __linux__
-    s21_memset(unknownerror, 0, 100);
-    s21_strncat(unknownerror, "Unknown error ", 100);
+    memset(unknownerror, 0, 100);
+    strncat(unknownerror, "Unknown error ", 100);
 #endif
-    s21_strncat(unknownerror, number, 100);
+    strncat(unknownerror, number, 100);
     ptr = (char *)unknownerror;
   } else {
     ptr = (char *)errorList[errnum];
@@ -286,7 +286,7 @@ void my_itoa(int n, char arr[]) {
 void my_reverse(char arr[]) {
   int i, j;
   char c;
-  for (i = 0, j = s21_strlen(arr) - 1; i < j; i++, j--) {
+  for (i = 0, j = strlen(arr) - 1; i < j; i++, j--) {
     c = arr[i];
     arr[i] = arr[j];
     arr[j] = c;

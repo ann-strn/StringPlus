@@ -1,10 +1,10 @@
-#ifndef S21_SPRINTF_H
-#define S21_SPRINTF_H
+#ifndef SPRINTF_H
+#define SPRINTF_H
 
 #include <stdarg.h>
 #include <string.h>  // tmp
 
-#include "s21_string.h"
+#include "string.h"
 
 typedef struct format {
   int flag_minus;
@@ -19,16 +19,16 @@ typedef struct format {
                 // int signed_type;//знаковый тип
 } pars_format;
 
-int s21_sprintf(char *str, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
 
-char *s21_parser(char *str, pars_format *form);  //основной парсер
+char *parser(char *str, pars_format *form);  //основной парсер
 char *pars_flags(char *str, pars_format *form);  //парсит флаги
 char *pars_width(char *str, pars_format *form);  // парсер ширины
 char *pars_precision(char *str, pars_format *form);  //парсе точности
 char *pars_length(char *str, pars_format *form);     //парсер длины
 char *pars_specifier(char *str, pars_format *form);  //парсер спецификатора
 
-char *s21_transfer_buf(va_list ap, pars_format *form);
+char *transfer_buf(va_list ap, pars_format *form);
 char *processing_char(va_list ap, pars_format *form);
 char *proc_signed_int(va_list ap, pars_format form);
 char *processing_float(va_list ap, pars_format *form);

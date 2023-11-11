@@ -1,6 +1,6 @@
-#include "s21_sprintf.h"
+#include "sprintf.h"
 
-char *s21_parser(char *str, pars_format *form) {
+char *parser(char *str, pars_format *form) {
   form->percent = 0;
   int work = 1;
   char *point = pars_flags(str, form);

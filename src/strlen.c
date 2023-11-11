@@ -1,9 +1,9 @@
 // 11. Вычисляет длину строки str, не включая завершающий нулевой символ.
 
-#include "s21_string.h"
+#include "string.h"
 
-s21_size_t s21_strlen(const char *str) {
-  s21_size_t len = 0;
+size_t strlen(const char *str) {
+  size_t len = 0;
   while (*str != '\0') {
     len++;
     str++;

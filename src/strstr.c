@@ -1,9 +1,9 @@
 // 14. Находит первое вхождение всей строки needle (не включая завершающий
 // нулевой символ), которая появляется в строке haystack.
 
-#include "s21_string.h"
+#include "string.h"
 
-char *s21_strstr(const char *haystack, const char *needle) {
+char *strstr(const char *haystack, const char *needle) {
   if (*needle == '\0') {
     return (char *)haystack;
   }
@@ -19,5 +19,5 @@ char *s21_strstr(const char *haystack, const char *needle) {
     }
     haystack++;
   }
-  return s21_NULL;
+  return NULL;
 }

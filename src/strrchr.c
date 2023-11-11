@@ -1,10 +1,10 @@
 // 13. Выполняет поиск последнего вхождения символа c (беззнаковый тип) в
 // строке, на которую указывает аргумент str.
 
-#include "s21_string.h"
+#include "string.h"
 
-char *s21_strrchr(const char *str, int c) {
-  const char *res = s21_NULL;
+char *strrchr(const char *str, int c) {
+  const char *res = NULL;
   int len = 0;
   while (*str != '\0') {
     str++;
